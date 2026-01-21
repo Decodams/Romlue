@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body { font-family: 'Inter', sans-serif; }
+    .font-montserrat { font-family: 'Montserrat', sans-serif; }
+    input:focus, select:focus, textarea:focus {
+        @apply border-forest-green ring-1 ring-forest-green outline-none;
+    }
+}
+
+@layer components {
+    .service-card {
+        @apply border-2 border-[#e9e5ce] rounded-xl p-4 transition-all cursor-pointer flex flex-col items-center gap-2 text-center hover:border-ocean-blue/50;
+    }
+    .service-card.active {
+        @apply border-ocean-blue bg-ocean-blue/5 ring-1 ring-ocean-blue;
+    }
+    .section-header {
+        @apply text-forest-green font-montserrat font-bold text-lg mb-6 flex items-center gap-2;
+    }
+    .mobile-menu {
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    .mobile-menu.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    .mobile-menu-overlay {
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .mobile-menu-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
