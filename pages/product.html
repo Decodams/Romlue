@@ -57,9 +57,6 @@
         }
         .product-card {
             @apply transition-all duration-300 hover:shadow-lg;
-            opacity: 1;
-            transform: scale(1);
-            transition: opacity 0.3s ease, transform 0.3s ease, display 0.3s ease;
         }
     </style>
     <script src="../js/menu.js"></script>
@@ -122,45 +119,6 @@
             
             // Redirect to quote page
             window.location.href = '../pages/quote.html';
-        }
-
-        function filterProducts(category) {
-            const filterTabs = document.querySelectorAll('.filter-tab');
-            const productCards = document.querySelectorAll('.product-card');
-            
-            // Update active tab
-            filterTabs.forEach(tab => {
-                tab.classList.remove('active');
-                tab.style.opacity = '0.5';
-                tab.style.borderColor = 'transparent';
-                tab.style.color = 'inherit';
-            });
-            
-            // Find and activate the clicked tab
-            event.target.classList.add('active');
-            event.target.style.opacity = '1';
-            event.target.style.borderColor = '#228c22';
-            event.target.style.color = '#228c22';
-            
-            // Filter products
-            productCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                if (category === 'all' || cardCategory === category) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 0);
-                } else {
-                    card.style.opacity = '0.5';
-                    card.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 300);
-                }
-            });
         }
     </script>
     <style>
@@ -344,17 +302,16 @@
 </div>
 <!-- Filter Tabs -->
 <div class="flex gap-2 overflow-x-auto pb-4 mb-12 border-b border-[#e9f1e9] dark:border-[#2a3a2a]">
-<button class="filter-tab active whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider border-b-2 border-primary text-primary" onclick="filterProducts('all')">All Products</button>
-<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300" onclick="filterProducts('solar-panel')">Solar Panels</button>
-<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300" onclick="filterProducts('inverter')">Inverters</button>
-<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300" onclick="filterProducts('battery-storage')">Battery Storage</button>
-<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300" onclick="filterProducts('mounting-hardware')">Mounting Hardware</button>
-<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300" onclick="filterProducts('cctv')">CCTV</button>
+<button class="filter-tab active whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider border-b-2 border-primary text-primary">All Products</button>
+<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300">Solar Panels</button>
+<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300">Inverters</button>
+<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300">Battery Storage</button>
+<button class="filter-tab whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider opacity-50 hover:opacity-100 border-b-2 border-transparent hover:border-gray-300">Mounting Hardware</button>
 </div>
 <!-- Product Masonry Grid -->
 <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
 <!-- Product Card 1 -->
-<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card" data-category="solar-panel">
+<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card">
 <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden relative group">
 <img class="w-full h-full object-cover" data-alt="BrightCell 400W Solar Panel" src="../assets/images/Image 6.jpg">
 <div class="absolute inset-0 image-preview-overlay bg-black/40">
@@ -377,7 +334,7 @@
 </div>
 </div>
 <!--Product Card-->
-<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card" data-category="cctv">
+<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card">
 <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden relative group">
 <img class="w-full h-full object-cover" data-alt="SunFlow 8KW Hybrid Inverter" src="../assets/images/Image 12.jpg">
 <div class="absolute inset-0 image-preview-overlay bg-black/40">
@@ -400,7 +357,7 @@
 </div>
 </div>
 <!-- Product Card 3 -->
-<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card" data-category="battery-storage">
+<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card">
 <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden relative group">
 <img class="w-full h-full object-cover" data-alt="PowerVault LiFePO4 50KWH Battery" src="../assets/images/Image 2.jpeg">
 <div class="absolute inset-0 image-preview-overlay bg-black/40">
@@ -423,7 +380,7 @@
 </div>
 </div>
 <!-- Product Card 4 -->
-<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card" data-category="mounting-hardware">
+<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card">
 <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden relative group">
 <img class="w-full h-full object-cover" data-alt="SnapRail Aluminum Mounting System" src="../assets/images/Image 5.jpg">
 <div class="absolute inset-0 image-preview-overlay bg-black/40">
@@ -446,7 +403,7 @@
 </div>
 </div>
 <!-- Product Card 5 -->
-<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card" data-category="inverter">
+<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card">
 <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden relative group">
 <img class="w-full h-full object-cover" data-alt="NetMonitor Smart Monitoring System" src="../assets/images/Image 4.jpeg">
 <div class="absolute inset-0 image-preview-overlay bg-black/40">
@@ -468,7 +425,7 @@
 <button class="w-full py-2 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-all" onclick="addToQuote('NetMonitor Smart System', '₦45,000', 'Real-time mobile app monitoring &amp; alerts.')">Add to Quote</button>
 </div>
 </div>
-<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden" data-category="battery-storage">
+<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden">
 <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="PowerVault LiFePO4 50KWH Battery" src="../assets/images/Image 2.jpeg">
 </div>
@@ -486,7 +443,7 @@
 </div>
 </div>
 <!-- Product Card 6 -->
-<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card" data-category="mounting-hardware">
+<div class="product-card bg-white dark:bg-[#1a2a1a] rounded-xl border border-[#e9f1e9] dark:border-[#2a3a2a] overflow-hidden image-card">
 <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden relative group">
 <img class="w-full h-full object-cover" data-alt="QuickConnect AC/DC Coupling Kit" src="../assets/images/Image 9.jpg">
 <div class="absolute inset-0 image-preview-overlay bg-black/40">
