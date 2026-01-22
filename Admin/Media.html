@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media &amp; Video Assets Hub</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0077b8",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1c23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0c171d] dark:text-white min-h-screen">
+<div class="relative flex flex-col w-full">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e6eff4] dark:border-slate-800 px-6 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#0c171d] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Admin Dashboard</h2>
+</div>
+<div class="hidden md:flex flex-1 items-stretch rounded-lg h-10 w-64">
+<div class="text-[#4581a1] flex border-none bg-[#e6eff4] dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#e6eff4] dark:bg-slate-800 text-[#0c171d] dark:text-white focus:ring-0 h-full placeholder:text-[#4581a1] px-4 rounded-r-lg pl-2 text-sm" placeholder="Search assets..."/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Media Gallery</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+<button class="bg-primary hover:bg-[#00669c] text-white flex items-center gap-2 px-5 h-10 rounded-lg text-sm font-bold transition-all shadow-sm">
+<span class="material-symbols-outlined text-lg">upload</span>
+<span>Bulk Upload</span>
+</button>
+<div class="size-10 rounded-full border border-slate-200 dark:border-slate-700 overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvB0Lqi01F7C6m5W02FNHqIA804zGTK42HpnvXefaa-G8ctIiD2QMmnXtH033kpgded-jqGTruSsSyBTjtoI_etBNZoC8i86fGZ14CKHX6EQxmbYdz2H53gyyserZF6eqNG1KtpTcmCPyeoXrgVFHA158HnaCbkFI7ScvKYp2-Zbs7iR6R2yF2pFfMCJ_0ItoxUmIT0YWTnaf3ucHEdBsMut4uhhFaVCXohixKD3ecM7QSqbEPFZwVi2WfqKjpOqoEeHx0jFe3YCIt"/>
+</div>
+</div>
+</header>
+<!-- Page Heading -->
+<main class="max-w-[1440px] mx-auto w-full p-6 md:p-10 space-y-8">
+<div class="flex flex-wrap justify-between items-end gap-6">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#0c171d] dark:text-white text-4xl font-black leading-tight tracking-tight">Media &amp; Video Assets Hub</h1>
+<p class="text-[#4581a1] dark:text-slate-400 text-lg">Manage your public gallery assets and define how they interact on the site.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-[#cde0ea] dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-[#f8fbfc] transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+<span>Filter</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-[#cde0ea] dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-[#f8fbfc] transition-colors">
+<span class="material-symbols-outlined">sort</span>
+<span>Latest</span>
+</button>
+</div>
+</div>
+<!-- Global Interaction Settings -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-[#cde0ea] dark:border-slate-800 p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">settings_input_component</span>
+<h2 class="text-xl font-bold">Global Interaction Settings</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<label class="block text-sm font-bold text-[#0c171d] dark:text-slate-200">Hover Animations</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center gap-2 p-4 rounded-lg border-2 border-primary bg-primary/5 text-primary">
+<span class="material-symbols-outlined">zoom_in</span>
+<span class="text-xs font-bold uppercase tracking-wider">Zoom</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-lg border-2 border-transparent bg-background-light dark:bg-slate-800 hover:border-[#cde0ea] transition-all">
+<span class="material-symbols-outlined">opacity</span>
+<span class="text-xs font-bold uppercase tracking-wider">Fade</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-lg border-2 border-transparent bg-background-light dark:bg-slate-800 hover:border-[#cde0ea] transition-all">
+<span class="material-symbols-outlined">filter_b_and_w</span>
+<span class="text-xs font-bold uppercase tracking-wider">Grayscale</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<label class="block text-sm font-bold text-[#0c171d] dark:text-slate-200">Click Text Behavior</label>
+<div class="flex flex-col gap-3">
+<input class="form-input w-full bg-background-light dark:bg-slate-800 border-[#cde0ea] dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Enter text to show on click..." type="text" value="View Details"/>
+<p class="text-xs text-[#4581a1]">This text will appear in a tooltip or overlay when a user clicks an asset in the public gallery.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Dual-Pane Media Management -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+<!-- Image Management Pane -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-[#cde0ea] dark:border-slate-800 pb-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">image</span>
+<h3 class="text-lg font-bold">Image Library</h3>
+<span class="bg-[#e6eff4] dark:bg-slate-800 px-2 py-0.5 rounded text-xs font-bold text-primary">42 Assets</span>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">Select All</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Image Card 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-[#cde0ea] dark:border-slate-800 group shadow-sm">
+<div class="relative aspect-video">
+<img alt="Scenic Lake" class="w-full h-full object-cover" data-alt="Scenic lake landscape with mountains" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwuIytevtFPFddXS4meshhsKtnBW-hhBtetIgxEwjL-QfY0gaz6qm8IbYawAaYN8PhVvl3Sb9twH9MSBwtMPZau8ji1ZejQYmgyAa2u-A6TmnTvq1cIfQebtNjx2sdM3vVMOY8XQxPMXgyZt-mTc9xuIGyiOcNJGCaQWsYZtJUfXOdtVZ27QJTdxgDAHW2Qp-EpmB7MaMoNKhV3IDxZmpU6DI76KmRNKIN_7WzlNXJuoTCby0e_fxgKt-pJbw3SYeBi-wRqCBkT61Y"/>
+<div class="absolute top-2 left-2">
+<span class="bg-primary text-white text-[10px] px-2 py-1 rounded font-bold uppercase tracking-tight">Featured on Home</span>
+</div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="bg-white text-primary p-2 rounded-full hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold truncate">mountain-retreat.jpg</p>
+<span class="text-xs text-[#4581a1]">1.2 MB</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<a class="text-primary text-xs font-bold flex items-center gap-1 hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                                        View on Site
+                                    </a>
+<button class="px-3 py-1.5 border border-primary text-primary rounded text-xs font-bold hover:bg-primary/10 transition-colors">
+                                        Edit Details
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Image Card 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-[#cde0ea] dark:border-slate-800 group shadow-sm">
+<div class="relative aspect-video">
+<img alt="Mountain Range" class="w-full h-full object-cover" data-alt="Aerial mountain range landscape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm9NPU1CfiFL0DFSAA5JTIBTF_qVLNNC2-XmjtNZ53BLjXA8doHQyFz6RvS8HnFHka2OhCeQ9eX6jroeYCClccMkpPuQ7asQUli7G8e9SvmugAMF8VaqrbT7W27Su9Wqf0SMlIE1i2Zt0CTmTVwkug2MVaJnzJUqjlH6h3lje0jT4sj5Y5btvuv5wM2RbIvCIFSMVKdn9nYW6WlAVlM49H5P7a4-uCycl6Ojv9lSGW1HUrnZL80u1zJbUqgH9WWjc-E50XfToOQbxJ"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#e6eff4] text-[#0c171d] text-[10px] px-2 py-1 rounded font-bold uppercase tracking-tight">Gallery Only</span>
+</div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-primary p-2 rounded-full hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold truncate">summit-view-01.png</p>
+<span class="text-xs text-[#4581a1]">2.5 MB</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<a class="text-primary text-xs font-bold flex items-center gap-1 hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                                        View on Site
+                                    </a>
+<button class="px-3 py-1.5 border border-primary text-primary rounded text-xs font-bold hover:bg-primary/10 transition-colors">
+                                        Edit Details
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Video Management Pane -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-[#cde0ea] dark:border-slate-800 pb-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">movie</span>
+<h3 class="text-lg font-bold">Video Library</h3>
+<span class="bg-[#e6eff4] dark:bg-slate-800 px-2 py-0.5 rounded text-xs font-bold text-primary">12 Assets</span>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">Select All</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Video Card 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-[#cde0ea] dark:border-slate-800 group shadow-sm">
+<div class="relative aspect-video">
+<img alt="Forest Video" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Still frame from nature video showing a forest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNJj4HuhSr-gDYyWfn3eB2jtjy5EagPdLUq_5RmSfwHpGKVwk-xT6Dq5cIFjcgoXbc_Z-iRg1LWsfLqlEwSI_FzEvLEfF3car0PbL40DAAJhL3cLVmcYIKKEa11uBpyGWrZY7vo2C95-J3eOnxaheZWuvkdfki5HMhpbewmjQRBTh6uheHndv65ExKhDU0ZUAhiI3wb54K-jNzoELGeox1hYfDAJ4f3MamnsK9sujBbTaFi6e1VntZOj97CiajdmLz-CqeL8SwhbAt"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 right-2">
+<span class="bg-black/70 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">01:45</span>
+</div>
+<div class="absolute top-2 left-2">
+<span class="bg-primary text-white text-[10px] px-2 py-1 rounded font-bold uppercase tracking-tight">Main Background</span>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold truncate">hero-forest-bg.mp4</p>
+<span class="text-xs text-[#4581a1]">14.8 MB</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<a class="text-primary text-xs font-bold flex items-center gap-1 hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                                        View on Site
+                                    </a>
+<button class="px-3 py-1.5 border border-primary text-primary rounded text-xs font-bold hover:bg-primary/10 transition-colors">
+                                        Edit Details
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Video Card 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-[#cde0ea] dark:border-slate-800 group shadow-sm">
+<div class="relative aspect-video">
+<img alt="Camera Video" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Still frame from photography tutorial video" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDhm2miOFwgiWaJ4UAwyxauucp3YWHGoyO2jhRbSPPR95NBOyGrbF2apjIXGJy2iexqVk-Ooj6HupJHv2BC1YiwvZXKoVCWQgyByOYaCYczODyanL9W3gF0erMYI_viDHdaJK097KovSYKVuYlGYO1G8-JCdETXSrgaM_v7sAb8SUS6Wp2IdG9e2ponK72oKhsYJc25rjbuI8G4JhuYsMfVaYCfxDSXlI1czJyzAPTFiBqs9IyjMazNlDx_0XaBQaEAhTNnMPLivsD"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 right-2">
+<span class="bg-black/70 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">04:12</span>
+</div>
+<div class="absolute top-2 left-2">
+<span class="bg-[#cde0ea] text-[#0c171d] text-[10px] px-2 py-1 rounded font-bold uppercase tracking-tight">Draft</span>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold truncate">tutorial-photography.mp4</p>
+<span class="text-xs text-[#4581a1]">85.2 MB</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<a class="text-primary text-xs font-bold flex items-center gap-1 hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                                        View on Site
+                                    </a>
+<button class="px-3 py-1.5 border border-primary text-primary rounded text-xs font-bold hover:bg-primary/10 transition-colors">
+                                        Edit Details
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Stats -->
+<footer class="flex items-center justify-between pt-8 border-t border-[#cde0ea] dark:border-slate-800 text-[#4581a1] text-sm">
+<p>© 2024 Admin Media Center. Total Storage: 124 GB / 500 GB</p>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

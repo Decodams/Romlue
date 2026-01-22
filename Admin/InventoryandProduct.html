@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory &amp; Product Manager</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffd900",
+                        "forest-green": "#228B22",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#23200f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1d1a0c] dark:text-white transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-40">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#1d1a0c] dark:text-white">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-black">inventory_2</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Admin Dashboard</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg" data-icon="search">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-800 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-slate-800 placeholder:text-slate-400 px-4 rounded-l-none pl-2 text-sm font-normal" placeholder="Search products..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-1" href="#">Products</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Orders</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Customers</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/20">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/20">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEC1SsidAmmiHpoLiq9Yn52XVd7CjchKL-rFWgo2Cne7GWezrzdoe5Zj5rfoflHOPuusMbSGjVQe4KVdl3FlBXA2rNzPZ25ERjPwqgdgp1tNdIGUjKNg-52N0_GAcZ5mw3QVPkA8Z7Jpw2yp5lBWTyTnxtaH5dbMucLTLRT19Yuq-0sUuHcry_q8Yo64m7t_6wEimj5ZwEhHR38_RwbhHNYPhVSw9aG8KYjvE_aYxlJGThQBzrS28NGWoX9VsEPxlLeV26K9IcI7IF");'></div>
+</div>
+</header>
+<main class="flex flex-col items-center py-8">
+<div class="layout-content-container flex flex-col max-w-[1200px] w-full px-6 lg:px-10">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-2">
+<a class="text-slate-400 text-sm font-medium hover:text-primary" href="#">Admin Dashboard</a>
+<span class="text-slate-400 text-sm font-medium">/</span>
+<span class="text-slate-800 dark:text-white text-sm font-semibold">Inventory &amp; Products</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+<div>
+<h1 class="text-[#1d1a0c] dark:text-white text-3xl font-black leading-tight tracking-tight">Inventory Management</h1>
+<p class="text-slate-500 text-sm mt-1">Manage your catalog, stock levels, and product visibility.</p>
+</div>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-primary text-black text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="truncate">Add New Product</span>
+</button>
+</div>
+<!-- Filter Chips / Tabs -->
+<div class="flex justify-between items-center mb-6 bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex gap-2">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary px-6 text-black text-sm font-bold shadow-sm">
+                                All Products
+                            </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-primary/20 px-6 text-slate-700 dark:text-slate-300 text-sm font-semibold transition-colors">
+<span class="material-symbols-outlined text-sm">wb_sunny</span>
+                                Solar
+                            </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-primary/20 px-6 text-slate-700 dark:text-slate-300 text-sm font-semibold transition-colors">
+<span class="material-symbols-outlined text-sm">security</span>
+                                Security
+                            </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-primary/20 px-6 text-slate-700 dark:text-slate-300 text-sm font-semibold transition-colors">
+<span class="material-symbols-outlined text-sm">construction</span>
+                                Accessories
+                            </button>
+</div>
+<div class="pr-2 flex items-center gap-4">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- Inventory Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-24">Image</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Product Name</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Category</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Price</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Stock Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="bg-slate-200 dark:bg-slate-700 rounded-lg size-12 overflow-hidden border border-slate-100 dark:border-slate-600" data-alt="Monocrystalline Solar Panel">
+<img alt="Solar Panel" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy4CEmkQDD-rVghv_xSHjbFtmosH85_H6jElkhWrHxaQHu_uJS5uHKWwLeDPA02l1hRfFhS7F8O3JO2aG0_tsNl100sfvI57TbJMo_aNOo5NOe-nJK-wOgOVsabW2fKOwq00WHBOQ3jp2TBaW7pGn6CxgpjPNcN7wJNGqWfJhZcxPpjkXTZfRZlXN5xV5cyix4L9HXU7TorZZ_YBFseNPioe65ahUxZtK0QR7MosI-Vcdv5g8eklRaCLOoodKwp76FNhndjBYkzwkb"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">400W Monocrystalline Panel</span>
+<span class="text-xs text-slate-400">SKU: SOL-400-MC</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                                                Solar
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$299.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-forest-green text-white">
+<span class="size-1.5 rounded-full bg-white animate-pulse"></span>
+                                                In Stock
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-forest-green transition-colors" title="Toggle Live">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="bg-slate-200 dark:bg-slate-700 rounded-lg size-12 overflow-hidden border border-slate-100 dark:border-slate-600" data-alt="4K Security Camera">
+<img alt="Security Camera" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkGMlbYzM9BMBpL-YvkHzsnR_xu07WtW5sNCwd8Xu0N4kd4OhNs_cAgoI8eCnwYAh74mif-ZLQaXg-kjMznmdD7oY-eOz-w-ydVPh58EyclKH7RPibf6bVBZC9qO5rqEy5zUkyLuySPmem4srAzk6Dals2pJG8GpRfYGkTo89UkSRpH9pkXB9k6WERXClkOJTTOKD7LS5xram-UdTFgAA_K_Af_dcT7G9EhrLqBtWhmELTqWvtJDivh1xLSMGDTRH4QlTA1NfunwNq"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Guardian Pro 4K Night Vision</span>
+<span class="text-xs text-slate-400">SKU: SEC-4K-GPRO</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
+                                                Security
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$149.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-amber-100 dark:bg-amber-900/20 text-amber-600 dark:text-amber-500 border border-amber-200 dark:border-amber-800">
+<span class="size-1.5 rounded-full bg-amber-500"></span>
+                                                Low Stock (5)
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-forest-green transition-colors" title="Toggle Live">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="bg-slate-200 dark:bg-slate-700 rounded-lg size-12 overflow-hidden border border-slate-100 dark:border-slate-600" data-alt="Pure Sine Wave Inverter">
+<img alt="Inverter" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqT6d6vGUbCdYrpQoyA8q8UC5HNGwYGmP1FClntpoOYKcnT53JRRJx26V39NHqa2d-Rh4fhV7INp8AtIrVyp5IoGMa5HArbb8F75lrXgGhPiQiTSd817zmR1P1kxW1TY4SyyVv2Esk9BOdwi5tKW1UPunNIUKpAqNWNYnMjcCpRV81w11hOyO6VFfoiB2ksU2S8yyMSYni6HL72F1IVLwu_VOXNp-9FglmAMeVFm3whmwnQKzp20BTdAxBWwfMKcXZ5R9F3ZQdUKsK"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Pure Sine Wave Inverter 2000W</span>
+<span class="text-xs text-slate-400">SKU: ACC-INV-2000</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                                                Accessories
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$450.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-forest-green text-white">
+<span class="size-1.5 rounded-full bg-white"></span>
+                                                In Stock
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-300 dark:text-slate-600 transition-colors" title="Toggle Live">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="bg-slate-200 dark:bg-slate-700 rounded-lg size-12 overflow-hidden border border-slate-100 dark:border-slate-600" data-alt="Deep Cycle Battery">
+<img alt="Battery" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKmbaS5Gff9IgmxDHkZd6UN0Dnj0fMA_Shu9zg5bHIOiOPH1ETmUKTjMrKZnW48LgWrQtbH1qNw5242WkTdpXI1r96Cj4yg6CjTDBP2bXKdmCMEJs8ZYGZtSO7sCY_m3ds-cx72JXB2FxUnpi4hrczw4w_bmzux-d6JPdqgATvf_X99n6pqObI9Fw0gsCizUjz4Dp32d5VS010A0hCfydOX9kWsxHILKUU6_VW8UW7dXSze6pOLjds9G3EvxDnTycWmc-ITqDaZ93f"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">100Ah Deep Cycle Gel Battery</span>
+<span class="text-xs text-slate-400">SKU: SOL-BAT-100G</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                                                Solar
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$899.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800">
+<span class="size-1.5 rounded-full bg-red-600"></span>
+                                                Out of Stock
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-300 dark:text-slate-600 transition-colors" title="Toggle Live">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<span class="text-sm text-slate-500 dark:text-slate-400 font-medium">Showing 1-4 of 24 products</span>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-8 rounded border border-slate-200 dark:border-slate-700 text-slate-400 hover:bg-white dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded bg-primary text-black font-bold text-xs">1</button>
+<button class="flex items-center justify-center size-8 rounded border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 font-semibold text-xs">2</button>
+<button class="flex items-center justify-center size-8 rounded border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 font-semibold text-xs">3</button>
+<button class="flex items-center justify-center size-8 rounded border border-slate-200 dark:border-slate-700 text-slate-400 hover:bg-white dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Add/Edit Multi-step Modal Overlay (Simulation) -->
+<!-- Fixed at bottom or visible in this design draft to show interaction -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+<div class="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<h3 class="text-xl font-black">Add New Product</h3>
+<button class="text-slate-400 hover:text-red-500"><span class="material-symbols-outlined">close</span></button>
+</div>
+<!-- Step Indicator -->
+<div class="px-8 py-4 bg-slate-50 dark:bg-slate-800/50 flex justify-between relative">
+<div class="flex flex-col items-center z-10">
+<div class="size-8 rounded-full bg-primary flex items-center justify-center text-black font-bold text-sm ring-4 ring-white dark:ring-slate-900">1</div>
+<span class="text-[10px] mt-1 font-bold uppercase tracking-wider">Basic Info</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 font-bold text-sm ring-4 ring-white dark:ring-slate-900">2</div>
+<span class="text-[10px] mt-1 font-bold uppercase tracking-wider text-slate-400">Pricing</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 font-bold text-sm ring-4 ring-white dark:ring-slate-900">3</div>
+<span class="text-[10px] mt-1 font-bold uppercase tracking-wider text-slate-400">Inventory</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 font-bold text-sm ring-4 ring-white dark:ring-slate-900">4</div>
+<span class="text-[10px] mt-1 font-bold uppercase tracking-wider text-slate-400">Review</span>
+</div>
+<!-- Connector Line -->
+<div class="absolute top-8 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-700 -z-0 mx-auto max-w-[80%] inset-x-0"></div>
+</div>
+<!-- Modal Body (Step 1 Sample) -->
+<div class="p-8 space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<div class="col-span-2">
+<label class="block text-xs font-bold uppercase text-slate-500 mb-2">Product Name</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-3 focus:ring-primary focus:border-primary" placeholder="Enter product title" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase text-slate-500 mb-2">Category</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-3 focus:ring-primary focus:border-primary">
+<option>Solar Panels</option>
+<option>Inverters</option>
+<option>Security Cameras</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase text-slate-500 mb-2">SKU Code</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-3 focus:ring-primary focus:border-primary" placeholder="e.g. SOL-123" type="text"/>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30 flex justify-between items-center">
+<button class="text-sm font-bold text-slate-400 hover:text-slate-600">Cancel</button>
+<div class="flex gap-4">
+<button class="px-6 py-2 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-bold text-sm">Previous</button>
+<button class="px-8 py-2 rounded-lg bg-primary text-black font-bold text-sm shadow-lg shadow-primary/20">Next Step</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

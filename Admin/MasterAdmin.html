@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Master Admin Command Center - Romleu CM Energy</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#228c22",
+                        "accent-blue": "#0077B6",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#131f13",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .active-nav {
+            background-color: #228c22;
+            color: white !important;
+        }
+    </style>
+    <script src="../js/db.js"></script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased font-display">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside
+            class="w-64 fixed inset-y-0 left-0 z-50 bg-white dark:bg-zinc-900 border-r border-slate-200 dark:border-zinc-800 hidden lg:flex flex-col">
+            <div class="p-6 flex items-center gap-3">
+                <div class="bg-primary/10 p-2 rounded-lg">
+                    <span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold leading-none">Romleu CM</h1>
+                    <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Energy Limited</p>
+                </div>
+            </div>
+            <nav class="flex-1 px-4 space-y-1 mt-4">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl active-nav" href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="text-sm font-semibold">Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+                    href="InventoryandProduct.html">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="text-sm font-semibold">Products</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+                    href="Media.html">
+                    <span class="material-symbols-outlined">photo_library</span>
+                    <span class="text-sm font-semibold">Media Gallery</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+                    href="../solution.html">
+                    <span class="material-symbols-outlined">settings_suggest</span>
+                    <span class="text-sm font-semibold">Services</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+                    href="Inquiries.html">
+                    <span class="material-symbols-outlined">contact_support</span>
+                    <span class="text-sm font-semibold">Inquiries</span>
+                    <span class="ml-auto bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full">18</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+                    href="AdminSetting.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="text-sm font-semibold">Settings</span>
+                </a>
+            </nav>
+            <div class="p-4 border-t border-slate-200 dark:border-zinc-800">
+                <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-zinc-800/50">
+                    <div class="size-10 rounded-full bg-slate-200 dark:bg-zinc-700 bg-cover bg-center"
+                        data-alt="Admin user profile picture"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsfrvUpFJKudcUNWMRnPmzIkLOifHnHjZuhJTBiZfSf6CNWvXV0OZNwvqFQTd2O8UuWKP3Fol8_o4md0NXQ8NNwV7gvquG5ajrHowHAQDEXKRs3RACCXolwvr9EQQmpPXdcgBkZSMm-xIb02kIoDSCbFMIobtDAjZKg_m2-_tAllRKGjCk7J4eQ2YJpKZ3LyWDXAkMFGtiIZzYUueo56DctpfSE0yclzjbvCjgWP-re1QZz16y5X0nXZMPpw98ZzBGjf3tysL2esVv");'>
+                    </div>
+                    <div class="flex-1 overflow-hidden">
+                        <p class="text-sm font-bold truncate">Alex Morgan</p>
+                        <p class="text-xs text-slate-500 truncate">Master Admin</p>
+                    </div>
+                    <button class="text-slate-400 hover:text-red-500 transition-colors">
+                        <span class="material-symbols-outlined text-xl">logout</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 lg:ml-64 flex flex-col min-h-screen">
+            <!-- Top Navigation -->
+            <header
+                class="h-16 sticky top-0 z-40 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-slate-200 dark:border-zinc-800 flex items-center justify-between px-6 lg:px-8">
+                <div class="flex items-center gap-4 flex-1">
+                    <button class="lg:hidden text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                    <div class="max-w-md w-full relative">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+                        <input
+                            class="w-full bg-slate-100 dark:bg-zinc-800 border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/50 placeholder:text-slate-500"
+                            placeholder="Search Command Center..." type="text" />
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button
+                        class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-lg relative">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span
+                            class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-zinc-900"></span>
+                    </button>
+                    <button
+                        class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-lg">
+                        <span class="material-symbols-outlined">help</span>
+                    </button>
+                    <div class="h-6 w-px bg-slate-200 dark:border-zinc-800 mx-2"></div>
+                    <span class="text-sm font-semibold hidden sm:inline">Command Mode</span>
+                    <div class="size-3 bg-primary rounded-full animate-pulse"></div>
+                </div>
+            </header>
+            <!-- Dynamic Workspace -->
+            <div class="p-6 lg:p-10 space-y-8 max-w-7xl mx-auto w-full">
+                <!-- Page Heading -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Command Center
+                        </h2>
+                        <p class="text-slate-500 mt-1">Operational overview for Romleu CM Energy systems.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="flex items-center gap-2 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-50 transition-colors">
+                            <span class="material-symbols-outlined text-lg">calendar_today</span>
+                            Last 24 Hours
+                        </button>
+                        <button
+                            class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">
+                            <span class="material-symbols-outlined text-lg">download</span>
+                            Export Data
+                        </button>
+                    </div>
+                </div>
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div
+                        class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm flex flex-col gap-2 hover:shadow-md transition-shadow cursor-default">
+                        <div class="flex justify-between items-start">
+                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Traffic</p>
+                            <span
+                                class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg">show_chart</span>
+                        </div>
+                        <p class="text-3xl font-extrabold tracking-tight">12,480</p>
+                        <div class="flex items-center gap-1.5 mt-2">
+                            <span
+                                class="text-xs font-bold text-primary flex items-center bg-primary/10 px-1.5 py-0.5 rounded">+12%</span>
+                            <span class="text-xs text-slate-400">vs yesterday</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm flex flex-col gap-2 hover:shadow-md transition-shadow cursor-default">
+                        <div class="flex justify-between items-start">
+                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Active Products</p>
+                            <span
+                                class="material-symbols-outlined text-accent-blue bg-accent-blue/10 p-1.5 rounded-lg">inventory_2</span>
+                        </div>
+                        <p class="text-3xl font-extrabold tracking-tight">342</p>
+                        <div class="flex items-center gap-1.5 mt-2">
+                            <span
+                                class="text-xs font-bold text-primary flex items-center bg-primary/10 px-1.5 py-0.5 rounded">+3%</span>
+                            <span class="text-xs text-slate-400">newly listed</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm flex flex-col gap-2 hover:shadow-md transition-shadow cursor-default">
+                        <div class="flex justify-between items-start">
+                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Pending Leads</p>
+                            <span
+                                class="material-symbols-outlined text-orange-500 bg-orange-500/10 p-1.5 rounded-lg">pending_actions</span>
+                        </div>
+                        <p class="text-3xl font-extrabold tracking-tight">18</p>
+                        <div class="flex items-center gap-1.5 mt-2">
+                            <span
+                                class="text-xs font-bold text-red-500 flex items-center bg-red-500/10 px-1.5 py-0.5 rounded">-5%</span>
+                            <span class="text-xs text-slate-400">response time improved</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm flex flex-col gap-2 hover:shadow-md transition-shadow cursor-default">
+                        <div class="flex justify-between items-start">
+                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Revenue (PKR)</p>
+                            <span
+                                class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg">payments</span>
+                        </div>
+                        <p class="text-3xl font-extrabold tracking-tight">850,000</p>
+                        <div class="flex items-center gap-1.5 mt-2">
+                            <span
+                                class="text-xs font-bold text-primary flex items-center bg-primary/10 px-1.5 py-0.5 rounded">+18%</span>
+                            <span class="text-xs text-slate-400">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feed and Quick Post Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Live Activity Feed -->
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="flex items-center justify-between px-2">
+                            <h3 class="text-xl font-bold">Live Activity Feed</h3>
+                            <button class="text-sm font-bold text-primary hover:underline">View All Logs</button>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 divide-y dark:divide-zinc-800 shadow-sm overflow-hidden">
+                            <!-- Feed Item -->
+                            <div class="p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <div
+                                    class="size-10 shrink-0 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-xl">contact_page</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm font-bold">New Inquiry Received</p>
+                                        <span class="text-[11px] font-medium text-slate-400">2 mins ago</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">John Doe submitted a quotation
+                                        request for "Industrial Solar Grid (50KW)".</p>
+                                    <div class="mt-2 flex gap-2">
+                                        <button
+                                            class="text-xs font-bold bg-primary text-white px-3 py-1 rounded">Respond</button>
+                                        <button
+                                            class="text-xs font-bold text-slate-500 border border-slate-200 px-3 py-1 rounded">Dismiss</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Feed Item -->
+                            <div class="p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <div
+                                    class="size-10 shrink-0 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-xl">update</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm font-bold">Product Catalog Updated</p>
+                                        <span class="text-[11px] font-medium text-slate-400">1 hour ago</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Marketing team updated
+                                        specifications for 5 battery storage products.</p>
+                                </div>
+                            </div>
+                            <!-- Feed Item -->
+                            <div class="p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <div
+                                    class="size-10 shrink-0 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-xl">report</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm font-bold">Failed Login Attempt</p>
+                                        <span class="text-[11px] font-medium text-slate-400">3 hours ago</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Multiple failed login attempts
+                                        from IP 192.168.1.45 (Islamabad, PK).</p>
+                                    <button
+                                        class="mt-2 text-xs font-bold text-red-600 border border-red-200 px-3 py-1 rounded hover:bg-red-50">Investigate
+                                        IP</button>
+                                </div>
+                            </div>
+                            <!-- Feed Item -->
+                            <div class="p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <div
+                                    class="size-10 shrink-0 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-xl">task_alt</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm font-bold">System Backup Successful</p>
+                                        <span class="text-[11px] font-medium text-slate-400">Yesterday</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Weekly cloud synchronization
+                                        completed with 0 errors.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Widgets / Quick Actions -->
+                    <div class="space-y-8">
+                        <!-- Quick Post Widget -->
+                        <div
+                            class="bg-white dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm overflow-hidden">
+                            <div class="bg-primary/5 p-4 border-b border-slate-200 dark:border-zinc-800">
+                                <h3 class="font-bold flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary">edit_note</span>
+                                    Quick Post
+                                </h3>
+                            </div>
+                            <div class="p-4 space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Update
+                                        Title</label>
+                                    <input
+                                        class="w-full text-sm rounded-lg border-slate-200 dark:border-zinc-800 dark:bg-zinc-800 focus:ring-primary focus:border-primary"
+                                        placeholder="e.g., Weekly Site Maintenance" type="text" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Content</label>
+                                    <textarea
+                                        class="w-full text-sm rounded-lg border-slate-200 dark:border-zinc-800 dark:bg-zinc-800 focus:ring-primary focus:border-primary"
+                                        placeholder="Draft your internal update or public news..." rows="4"></textarea>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button
+                                        class="flex-1 bg-primary text-white font-bold text-sm py-2 rounded-lg hover:bg-primary/90">Post
+                                        Update</button>
+                                    <button
+                                        class="p-2 border border-slate-200 dark:border-zinc-800 rounded-lg text-slate-400 hover:text-slate-600 transition-colors">
+                                        <span class="material-symbols-outlined">attach_file</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mini Map Widget -->
+                        <div
+                            class="bg-white dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm overflow-hidden">
+                            <div class="p-4 border-b border-slate-200 dark:border-zinc-800">
+                                <h3 class="font-bold flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-accent-blue">location_on</span>
+                                    Active Installations
+                                </h3>
+                            </div>
+                            <div class="h-48 bg-slate-200 dark:bg-zinc-800 relative bg-cover bg-center"
+                                data-alt="Map showing active energy project locations in Pakistan"
+                                data-location="Pakistan"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDG8FYfickkn4JUmeBwfsp8ODFAfwcjpMWnk-5yysNLLAjxKB5XMCY70X1MqKKvt4k-zdJrosfvN4SjJQaMypQU-aIKIfV2babr9ouZMfO_o0paQ8ZhFKEnMBK_d6QuLnhA9qN29nfG6FMLjn8pbEKgyivTxBaVP_owZ_7InIEJRURcqGC6IEYdBJlVioT_M-umEBDL8374RVhCeZEid7xk2wZeuE1AT8uoh1zNwkDtEKJeiwgytuEU1iHaUfiPHhZ16UADjPDYZ4J2');">
+                                <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+                                    <div
+                                        class="bg-white/90 dark:bg-zinc-900/90 px-3 py-1.5 rounded-full text-xs font-bold shadow-lg flex items-center gap-2">
+                                        <span class="size-2 bg-red-500 rounded-full animate-ping"></span>
+                                        12 Active Sites
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-center justify-between text-xs font-bold">
+                                    <span class="text-slate-500">KHI HUB: ONLINE</span>
+                                    <span class="text-primary">ISL HUB: SYNCING</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Update badge with real inquiry count
+        function updateInquiryBadge() {
+            const stats = window.RomlueDB?.getStats() || { unreadInquiries: 0 };
+            const badge = document.querySelector('#inquiryBadge, nav a[href="Inquiries.html"] span.bg-red-500');
+            if (badge) {
+                badge.textContent = stats.unreadInquiries;
+                badge.style.display = stats.unreadInquiries > 0 ? 'inline' : 'none';
+            }
+        }
+
+        // Update on load and every 5 seconds
+        document.addEventListener('DOMContentLoaded', function () {
+            updateInquiryBadge();
+            setInterval(updateInquiryBadge, 5000);
+        });
+    </script>
+</body>
+
+</html>

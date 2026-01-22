@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Content Upload Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffd900",
+                        "ocean-blue": "#0077B6",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#23200f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #eae5cd;
+            border-radius: 10px;
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen">
+<!-- Mock Background Page (Admin Dashboard) -->
+<div class="fixed inset-0 z-0">
+<header class="flex items-center justify-between border-b border-solid border-[#eae5cd] dark:border-[#3a3518] bg-white dark:bg-[#1a180b] px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#1d1a0c] dark:text-[#fcfbf8]">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold">Admin Suite</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9 text-sm font-medium text-[#1d1a0c] dark:text-[#fcfbf8]">
+<a class="opacity-60 hover:opacity-100" href="#">Dashboard</a>
+<a class="opacity-100 border-b-2 border-primary" href="#">Content</a>
+<a class="opacity-60 hover:opacity-100" href="#">Analytics</a>
+<a class="opacity-60 hover:opacity-100" href="#">Users</a>
+</nav>
+</div>
+<div class="flex gap-4">
+<div class="bg-gray-200 dark:bg-gray-700 size-10 rounded-full" data-alt="Admin user profile avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8GVp6bjr1YFDipsOw8tR3jAhWEv5FDBnehKWdIjsAr1iqKTPiF4jrQBbEEPXmOtg61ioPk7OrhU3paLqf0ZnGNcsURGO359O1ZXHNjyhgcJAYSnDeDMDt6t9d7axbe9W4O56EJGEZbA4e14x823a2WStxTIW9AVLthHCk7ig5z1K9AS3v-4xxsSVFHEUHufdyflmnTvWyekBcC6yvkyKhATVd5wirytvg4OYv3rlm1qtM60-4v8CailAqsVKm-27vdhNheLG7HOcN')"></div>
+</div>
+</header>
+<main class="p-10">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h1 class="text-3xl font-black text-[#1d1a0c] dark:text-[#fcfbf8]">Content Library</h1>
+<p class="text-[#a19345]">Manage your global digital assets.</p>
+</div>
+<button class="bg-primary px-6 py-3 rounded-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                    Add New Content
+                </button>
+</div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4">
+<!-- Modal Container -->
+<div class="bg-white dark:bg-[#1a180b] w-full max-w-[1000px] h-full max-h-[850px] rounded-xl shadow-2xl flex flex-col overflow-hidden">
+<!-- Modal Header -->
+<div class="px-8 py-6 border-b border-[#eae5cd] dark:border-[#3a3518] flex justify-between items-start">
+<div>
+<h2 class="text-2xl font-black text-[#1d1a0c] dark:text-[#fcfbf8]">Add New Content</h2>
+<p class="text-sm text-[#a19345]">Initialize global content deployment across platforms.</p>
+</div>
+<button class="text-[#a19345] hover:text-[#1d1a0c] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+</div>
+<!-- Tabs/Stepper -->
+<div class="px-8 border-b border-[#eae5cd] dark:border-[#3a3518] bg-[#fcfbf8] dark:bg-[#23200f]">
+<div class="flex gap-10">
+<div class="flex flex-col items-center justify-center border-b-[3px] border-primary text-[#1d1a0c] dark:text-white pb-3 pt-4">
+<p class="text-sm font-bold tracking-[0.015em]">1. Basic Info</p>
+</div>
+<div class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#a19345] pb-3 pt-4">
+<p class="text-sm font-bold tracking-[0.015em]">2. Technical Specs</p>
+</div>
+<div class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#a19345] pb-3 pt-4">
+<p class="text-sm font-bold tracking-[0.015em]">3. Media Upload</p>
+</div>
+<div class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#a19345] pb-3 pt-4">
+<p class="text-sm font-bold tracking-[0.015em]">4. SEO &amp; Live Settings</p>
+</div>
+</div>
+</div>
+<!-- Modal Body (Scrollable Content) -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8">
+<!-- Section: Content Title & Category -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-[#1d1a0c] dark:text-white">Content Title</label>
+<input class="w-full rounded-lg border-[#eae5cd] dark:border-[#3a3518] dark:bg-[#23200f] dark:text-white focus:ring-primary focus:border-primary p-3" placeholder="e.g. Summer Campaign 2024" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-[#1d1a0c] dark:text-white">Primary Category</label>
+<select class="w-full rounded-lg border-[#eae5cd] dark:border-[#3a3518] dark:bg-[#23200f] dark:text-white focus:ring-primary focus:border-primary p-3">
+<option>Promotional</option>
+<option>Educational</option>
+<option>Corporate</option>
+</select>
+</div>
+</div>
+<!-- Section: Rich Text Editor Mockup -->
+<div class="flex flex-col gap-2 mb-8">
+<label class="text-sm font-bold text-[#1d1a0c] dark:text-white">Description</label>
+<div class="border border-[#eae5cd] dark:border-[#3a3518] rounded-lg overflow-hidden">
+<div class="bg-[#f4f2e6] dark:bg-[#2a2712] border-b border-[#eae5cd] dark:border-[#3a3518] p-2 flex gap-4">
+<button class="p-1 hover:bg-white dark:hover:bg-black rounded transition-colors"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="p-1 hover:bg-white dark:hover:bg-black rounded transition-colors"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="p-1 hover:bg-white dark:hover:bg-black rounded transition-colors"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+<button class="p-1 hover:bg-white dark:hover:bg-black rounded transition-colors"><span class="material-symbols-outlined text-lg">link</span></button>
+<button class="p-1 hover:bg-white dark:hover:bg-black rounded transition-colors"><span class="material-symbols-outlined text-lg">image</span></button>
+</div>
+<textarea class="w-full border-none focus:ring-0 dark:bg-[#23200f] dark:text-white p-4 text-base placeholder:text-[#a19345]" placeholder="Enter detailed content description..." rows="6"></textarea>
+</div>
+</div>
+<!-- Section: Media Upload Drop Zone -->
+<div class="flex flex-col gap-2 mb-8">
+<label class="text-sm font-bold text-[#1d1a0c] dark:text-white">Hero Media Assets</label>
+<div class="border-2 border-dashed border-[#eae5cd] dark:border-[#3a3518] rounded-xl p-10 flex flex-col items-center justify-center bg-[#fcfbf8] dark:bg-[#1d1a0c] group hover:border-primary transition-colors cursor-pointer">
+<div class="size-16 bg-primary/20 rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<p class="text-lg font-semibold text-[#1d1a0c] dark:text-white">Drag and drop files here</p>
+<p class="text-sm text-[#a19345] mt-1">PNG, JPG, or MP4 (Max 50MB)</p>
+</div>
+</div>
+<!-- Section: Active Uploads (Progress Mockup) -->
+<div class="flex flex-col gap-4">
+<div class="bg-white dark:bg-[#23200f] border border-[#eae5cd] dark:border-[#3a3518] p-4 rounded-lg flex items-center gap-4">
+<div class="size-12 rounded bg-cover" data-alt="Summer banner hero preview thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtamWoZFn0OfnL3L8CEtCXhtX955-D8xAn2-vcM41Bbt5OXS7fuwi3A5wqXYdMKzK0WbeVv9QuFomSublOpE1QkauuvF5NCkMqpQoIKU5htqivfUjKiVwB3XhKKsC-_eolwdWaGKFNFf1Zxjxge_zF__lfjxaP5y6EBnv2aTdjFVIrErjMyARQQxVeoe6dY_6xw7Ai9oHxpgQQXBCHRzQohB4nqxMIZj5Q1MoxAuaI866WhQVRo6AYOrVVrZtqBbopW9VLU9XzS33g')"></div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-bold text-[#1d1a0c] dark:text-white">summer_banner_hero.png</span>
+<span class="text-xs font-bold text-primary">85%</span>
+</div>
+<div class="w-full bg-[#eae5cd] dark:bg-[#3a3518] h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+<button class="text-[#a19345] hover:text-red-500">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-8 py-6 border-t border-[#eae5cd] dark:border-[#3a3518] flex flex-col sm:flex-row justify-between items-center gap-4 bg-[#fcfbf8] dark:bg-[#1a180b]">
+<div class="flex items-center gap-2 text-[#a19345] text-sm font-medium">
+<span class="material-symbols-outlined text-base">info</span>
+                    Autosaved 2 minutes ago
+                </div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-6 py-3 rounded-lg font-bold text-[#1d1a0c] bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 transition-colors">
+                        Discard
+                    </button>
+<button class="flex-1 sm:flex-none px-6 py-3 rounded-lg font-bold text-white bg-ocean-blue hover:opacity-90 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">visibility</span>
+                        Preview
+                    </button>
+<button class="flex-1 sm:flex-none px-8 py-3 rounded-lg font-bold text-[#1d1a0c] bg-primary hover:opacity-90 transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">rocket_launch</span>
+                        Push to Website
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
