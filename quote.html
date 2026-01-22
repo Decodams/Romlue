@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Integrated Service &amp; Sales Quotation | Romlue Energy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#228c22",
+                        "ocean-blue": "#1e3a8a",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#131f13",
+                    },
+                    fontFamily: {
+                        "sans": ["Montserrat", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>body{font-family:Inter, sans-serif}</style>
+<script src="js/menu.js"></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#101910] dark:text-[#f9fbf9]">
+<!-- Header/nav same as other pages -->
+<main class="max-w-[1280px] mx-auto px-4 md:px-10 py-10">
+<!-- Quote page content (moved from pages/quote.html) -->
+<section>
+<h1>Quote Request</h1>
+<!-- selected product display populated from localStorage as implemented in pages/quote.html -->
+</section>
+<button onclick="window.location.href='contact.html';">Contact Sales</button>
+</main>
+</body></html>
