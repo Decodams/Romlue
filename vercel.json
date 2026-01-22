@@ -1,9 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/assets/:path*", "destination": "/assets/:path*" },
-    { "source": "/css/:path*", "destination": "/css/:path*" },
-    { "source": "/js/:path*", "destination": "/js/:path*" },
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/:path", "destination": "/:path.html" }
-  ]
-}
